@@ -61,8 +61,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
-            cd /path/to/your/laravel/app  # সার্ভারে তোমার প্রজেক্ট পাথ (যেমন /var/www/myapp)
-            php artisan down --message="Upgrading"  # Maintenance mode
+            cd/home/rayhan/public_html/cicd 
+            php artisan down --message="Upgrading" 
             git pull origin main
             composer install --no-interaction --no-progress --optimize-autoloader
             npm ci
