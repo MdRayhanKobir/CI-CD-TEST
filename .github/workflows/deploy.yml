@@ -10,15 +10,15 @@ jobs:
     steps:
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.3"  # তোমার PHP ভার্সন (Laravel 11-এর জন্য 8.2+)
+          php-version: "8.3"
 
-      - uses: actions/checkout@v4  # কোড চেকআউট
+      - uses: actions/checkout@v4  
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20  # Node.js Vite-এর জন্য
+          node-version: 20  
 
-      - uses: mirromutth/mysql-action@v1.1  # টেস্টিং-এর জন্য MySQL
+      - uses: mirromutth/mysql-action@v1.1  
         with:
           mysql database: testing
           mysql user: testing_user
@@ -50,10 +50,10 @@ jobs:
         run: chmod -R 775 storage bootstrap/cache
 
       - name: Run PHPUnit Tests
-        run: php artisan test  # বা vendor/bin/phpunit
+        run: php artisan test 
 
       - name: Deploy to Server
-        if: ${{ success() }}  # শুধু tests পাস হলে
+        if: ${{ success() }} 
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
